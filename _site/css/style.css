@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  text-align: center;
+  background-color: black;
+}
+
+.square {
+  width: 15%;
+  float: left;
+}
+
+.square:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.top-row, .bottom-row {
+  overflow: auto;
+}
+
+#yellow {
+  background-color: yellow;
+}
+
+#blue {
+  background-color: blue;
+}
+
+#red {
+  background-color: red;
+}
+
+#green {
+  background-color: green;
+}
+
+.bottom-row, #instructions {
+  clear: both;
+}
+
+#yellow, #red {
+  margin-left: 34.5%;
+}
+
+#blue, #green {
+  margin-left: 1%;
+}
+
+#red, #green, #score, #instructions {
+  margin-top: 1%;
+}
+
+#score {
+  margin-bottom: 1%;
+}
+
+#score, #instructions {
+  color: white;
+}
