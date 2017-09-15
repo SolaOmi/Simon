@@ -1,4 +1,5 @@
 * {
+  /*outline: 1px solid red;*/
   box-sizing: border-box;
   margin: 0;
 }
@@ -59,6 +60,6 @@ body {
   margin-bottom: 1%;
 }
 
-#score, #instructions {
-  color: white;
+.abc, #score, #instructions {
+  color: blue;
 }

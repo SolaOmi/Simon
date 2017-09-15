@@ -1,4 +1,5 @@
 * {
+  /*outline: 1px solid red;*/
   box-sizing: border-box;
   margin: 0;
 }
@@ -24,19 +25,19 @@ body {
 }
 
 #yellow {
-  background-color: yellow;
+  background-color: rgb(155,155,0);
 }
 
 #blue {
-  background-color: blue;
+  background-color: rgb(0,0,155);
 }
 
 #red {
-  background-color: red;
+  background-color: rgb(155,0,0);
 }
 
 #green {
-  background-color: green;
+  background-color: rgb(0,155,0);
 }
 
 .bottom-row, #instructions {
@@ -59,6 +60,6 @@ body {
   margin-bottom: 1%;
 }
 
-#score, #instructions {
-  color: white;
+.abc, #score, #instructions {
+  color: blue;
 }
