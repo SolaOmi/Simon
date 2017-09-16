@@ -20,7 +20,7 @@ body {
   padding-bottom: 100%;
 }
 
-.top-row, .bottom-row {
+.topRow, .bottomRow {
   overflow: auto;
 }
 
@@ -40,7 +40,7 @@ body {
   background-color: rgb(0,155,0);
 }
 
-.bottom-row, #instructions {
+.bottomRow, #instructions {
   clear: both;
 }
 
@@ -60,6 +60,6 @@ body {
   margin-bottom: 1%;
 }
 
-.abc, #score, #instructions {
+#score, #instructions {
   color: blue;
 }

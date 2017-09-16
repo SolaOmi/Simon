@@ -1,33 +1,62 @@
+// Constants
+var boxFlash = 1000;
+
+// Boxes
+var yellowBox = document.getElementById("yellow");
+var blueBox = document.getElementById("blue");
+var redBox = document.getElementById("red");
+var greenBox = document.getElementById("green");
+
+// Sounds
+var yellowSound = document.getElementById("yellowSound");
+var blueSound = document.getElementById("blueSound");
+var redSound = document.getElementById("redSound");
+var greenSound = document.getElementById("greenSound");
+
+// Colors
+var yellow = "rgb(155,155,0)";
+var blue = "rgb(0,0,155)";
+var red = "rgb(155,0,0)";
+var green = "rgb(0,155,0)";
+var brightYellow = "rgb(255,255,0)";
+var brightBlue = "rgb(0,0,255)";
+var brightRed = "rgb(255,0,0)";
+var brightGreen = "rgb(0,255,0)";
+
+// Flash colors to Brigher version, play sound, then go back to original color
 function flashYellow() {
-    $("#yellow").css("background-color", "rgb(255,255,0)");
+    yellowBox.style.backgroundColor = brightYellow;
+    yellowSound.play();
     setTimeout(function() {
-        $("#yellow").css("background-color", "rgb(155,155,0)");
-    }, 1000);
+        yellowBox.style.backgroundColor = yellow;
+    }, boxFlash);
 };
 
 function flashBlue() {
-    $("#blue").css("background-color", "rgb(0,0,255)");
+    blueBox.style.backgroundColor = brightBlue;
+    blueSound.play();
     setTimeout(function() {
-        $("#blue").css("background-color", "rgb(0,0,155)");
-    }, 1000);
+        blueBox.style.backgroundColor = blue;
+    }, boxFlash);
 };
 
 function flashRed() {
-    $("#red").css("background-color", "rgb(255,0,0)");
+    redBox.style.backgroundColor = brightRed;
+    redSound.play();
     setTimeout(function() {
-        $("#red").css("background-color", "rgb(155,0,0)");
-    }, 1000);
+        redBox.style.backgroundColor = red;
+    }, boxFlash);
 };
 
 function flashGreen() {
-    $("#green").css("background-color", "rgb(0,255,0)");
+    greenBox.style.backgroundColor = brightGreen;
+    greenSound.play();
     setTimeout(function() {
-        $("#green").css("background-color", "rgb(0,155,0)");
-    }, 1000);
+        greenBox.style.backgroundColor = green;
+    }, boxFlash);
 };
 
-
-$("#yellow").click(flashYellow);
-$("#blue").click(flashBlue);
-$("#red").click(flashRed);
-$("#green").click(flashGreen);
+yellowBox.addEventListener("click", flashYellow);
+blueBox.addEventListener("click", flashBlue);
+redBox.addEventListener("click", flashRed);
+greenBox.addEventListener("click", flashGreen);
