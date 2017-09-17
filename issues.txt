@@ -1,0 +1,1 @@
+- Sound issues when play patterns with short time delay.

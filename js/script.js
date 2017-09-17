@@ -1,8 +1,10 @@
-// Constants
+// Game variables
 var flashSpeed = 500;
+var pattern = [1, 2, 1, 2];
 
 // HTML elements
-var body = document.getElementsByTagName("body")[0];
+var body  = document.getElementsByTagName("body")[0];
+var start = document.getElementById("start");
 
 // Boxes
 var yellowBox = document.getElementById("yellow");
@@ -82,9 +84,38 @@ function gameOver() {
     body.style.backgroundColor = "rgb(0,0,0)";
 }
 
+function flash(num) {
+  switch(num) {
+    case 1:
+      flashYellow();
+      break;
+    case 2:
+      flashBlue();
+      break;
+    case 3:
+      flashRed();
+      break;
+    case 4:
+      flashGreen();
+      break;
+  }
+}
+
+function playPattern() {
+    var i = 0;
+    var interval = setInterval(function() {
+        flash(pattern[i]);
+        i++;
+        if (i >= pattern.length) {
+            clearInterval(interval);
+        }
+    }, 600);
+}
+
 // yellowBox.addEventListener("click", flashYellow);
 // blueBox.addEventListener("click", flashBlue);
 // redBox.addEventListener("click", flashRed);
 // greenBox.addEventListener("click", flashGreen);
 // body.addEventListener("click", changeBackgroundColor);
 // body.addEventListener("click", gameOver);
+start.addEventListener("click", playPattern);
