@@ -1,5 +1,8 @@
 // Constants
-var boxFlash = 1000;
+var flashSpeed = 500;
+
+// HTML elements
+var body = document.getElementsByTagName("body")[0];
 
 // Boxes
 var yellowBox = document.getElementById("yellow");
@@ -29,34 +32,48 @@ function flashYellow() {
     yellowSound.play();
     setTimeout(function() {
         yellowBox.style.backgroundColor = yellow;
-    }, boxFlash);
-};
+    }, flashSpeed);
+}
 
 function flashBlue() {
     blueBox.style.backgroundColor = brightBlue;
     blueSound.play();
     setTimeout(function() {
         blueBox.style.backgroundColor = blue;
-    }, boxFlash);
-};
+    }, flashSpeed);
+}
 
 function flashRed() {
     redBox.style.backgroundColor = brightRed;
     redSound.play();
     setTimeout(function() {
         redBox.style.backgroundColor = red;
-    }, boxFlash);
-};
+    }, flashSpeed);
+}
 
 function flashGreen() {
     greenBox.style.backgroundColor = brightGreen;
     greenSound.play();
     setTimeout(function() {
         greenBox.style.backgroundColor = green;
-    }, boxFlash);
-};
+    }, flashSpeed);
+}
+
+function changeBackgroundColor() {
+    var rValue = getRandomInt(0, 256);
+    var gValue = getRandomInt(0, 256);
+    var bValue = getRandomInt(0, 256);
+    body.style.backgroundColor = "rgb(" + rValue + "," + gValue + "," + bValue + ")";
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max-min)) + min;
+}
 
 yellowBox.addEventListener("click", flashYellow);
 blueBox.addEventListener("click", flashBlue);
 redBox.addEventListener("click", flashRed);
 greenBox.addEventListener("click", flashGreen);
+body.addEventListener("click", changeBackgroundColor);
