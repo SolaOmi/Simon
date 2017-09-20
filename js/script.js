@@ -13,10 +13,10 @@ var redBox    = document.getElementById("red");
 var greenBox  = document.getElementById("green");
 
 // Sounds
-var yellowSound = document.getElementById("yellowSound");
-var blueSound   = document.getElementById("blueSound");
-var redSound    = document.getElementById("redSound");
-var greenSound  = document.getElementById("greenSound");
+// var yellowSound = document.getElementById("yellowSound");
+// var blueSound   = document.getElementById("blueSound");
+// var redSound    = document.getElementById("redSound");
+// var greenSound  = document.getElementById("greenSound");
 
 // Colors
 var yellow       = "rgb(155,155,0)";
@@ -33,7 +33,7 @@ var black        = "rgb(0,0,0)";
 // Flash colors to Brigher version, play sound, then go back to original color
 function flashYellow() {
     yellowBox.style.backgroundColor = brightYellow;
-    yellowSound.play();
+    // yellowSound.play();
     setTimeout(function() {
         yellowBox.style.backgroundColor = yellow;
     }, flashSpeed);
@@ -41,7 +41,7 @@ function flashYellow() {
 
 function flashBlue() {
     blueBox.style.backgroundColor = brightBlue;
-    blueSound.play();
+    // blueSound.play();
     setTimeout(function() {
         blueBox.style.backgroundColor = blue;
     }, flashSpeed);
@@ -49,7 +49,7 @@ function flashBlue() {
 
 function flashRed() {
     redBox.style.backgroundColor = brightRed;
-    redSound.play();
+    // redSound.play();
     setTimeout(function() {
         redBox.style.backgroundColor = red;
     }, flashSpeed);
@@ -57,7 +57,7 @@ function flashRed() {
 
 function flashGreen() {
     greenBox.style.backgroundColor = brightGreen;
-    greenSound.play();
+    // greenSound.play();
     setTimeout(function() {
         greenBox.style.backgroundColor = green;
     }, flashSpeed);
@@ -77,10 +77,10 @@ function changeBackgroundColor() {
 }
 
 function gameOver() {
-    yellowSound.play();
-    blueSound.play();
-    redSound.play();
-    greenSound.play();
+    // yellowSound.play();
+    // blueSound.play();
+    // redSound.play();
+    // greenSound.play();
     body.style.backgroundColor = "rgb(0,0,0)";
 }
 
