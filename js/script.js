@@ -1,16 +1,22 @@
+// I borrowed the jquery $ syntax to differentiate between regular variables and
+// DOM variables, but there is no jquery at all in this project.
+
 // Game variables
 var flashSpeed = 500;
-var pattern = [1, 2, 1, 2];
+var game = [];
+var player = [];
+var score = 0
 
 // HTML elements
-var body  = document.getElementsByTagName("body")[0];
-var start = document.getElementById("start");
+var $body  = document.getElementsByTagName("body")[0];
+var $start = document.getElementById("start");
+var $scoreText = document.getElementById("score");
 
 // Boxes
-var yellowBox = document.getElementById("yellow");
-var blueBox   = document.getElementById("blue");
-var redBox    = document.getElementById("red");
-var greenBox  = document.getElementById("green");
+var $yellowBox = document.getElementById("yellow");
+var $blueBox   = document.getElementById("blue");
+var $redBox    = document.getElementById("red");
+var $greenBox  = document.getElementById("green");
 
 // Sounds
 // var yellowSound = document.getElementById("yellowSound");
@@ -30,36 +36,37 @@ var brightGreen  = "rgb(0,255,0)";
 var white        = "rgb(255,255,255)";
 var black        = "rgb(0,0,0)";
 
-// Flash colors to Brigher version, play sound, then go back to original color
+// Helper Functions
+
 function flashYellow() {
-    yellowBox.style.backgroundColor = brightYellow;
+    $yellowBox.style.backgroundColor = brightYellow;
     // yellowSound.play();
     setTimeout(function() {
-        yellowBox.style.backgroundColor = yellow;
+        $yellowBox.style.backgroundColor = yellow;
     }, flashSpeed);
 }
 
 function flashBlue() {
-    blueBox.style.backgroundColor = brightBlue;
+    $blueBox.style.backgroundColor = brightBlue;
     // blueSound.play();
     setTimeout(function() {
-        blueBox.style.backgroundColor = blue;
+        $blueBox.style.backgroundColor = blue;
     }, flashSpeed);
 }
 
 function flashRed() {
-    redBox.style.backgroundColor = brightRed;
+    $redBox.style.backgroundColor = brightRed;
     // redSound.play();
     setTimeout(function() {
-        redBox.style.backgroundColor = red;
+        $redBox.style.backgroundColor = red;
     }, flashSpeed);
 }
 
 function flashGreen() {
-    greenBox.style.backgroundColor = brightGreen;
+    $greenBox.style.backgroundColor = brightGreen;
     // greenSound.play();
     setTimeout(function() {
-        greenBox.style.backgroundColor = green;
+        $greenBox.style.backgroundColor = green;
     }, flashSpeed);
 }
 
@@ -73,29 +80,21 @@ function changeBackgroundColor() {
     var rValue = getRandomInt(0, 256);
     var gValue = getRandomInt(0, 256);
     var bValue = getRandomInt(0, 256);
-    body.style.backgroundColor = "rgb(" + rValue + "," + gValue + "," + bValue + ")";
+    $body.style.backgroundColor = "rgb(" + rValue + "," + gValue + "," + bValue + ")";
 }
 
-function gameOver() {
-    // yellowSound.play();
-    // blueSound.play();
-    // redSound.play();
-    // greenSound.play();
-    body.style.backgroundColor = "rgb(0,0,0)";
-}
-
-function flash(num) {
-  switch(num) {
-    case 1:
+function flash(color) {
+  switch(color) {
+    case "yellow":
       flashYellow();
       break;
-    case 2:
+    case "blue":
       flashBlue();
       break;
-    case 3:
+    case "red":
       flashRed();
       break;
-    case 4:
+    case "green":
       flashGreen();
       break;
   }
@@ -104,18 +103,58 @@ function flash(num) {
 function playPattern() {
     var i = 0;
     var interval = setInterval(function() {
-        flash(pattern[i]);
+        flash(game[i]);
         i++;
-        if (i >= pattern.length) {
+        if (i >= game.length) {
             clearInterval(interval);
         }
     }, 600);
 }
 
-// yellowBox.addEventListener("click", flashYellow);
-// blueBox.addEventListener("click", flashBlue);
-// redBox.addEventListener("click", flashRed);
-// greenBox.addEventListener("click", flashGreen);
-// body.addEventListener("click", changeBackgroundColor);
-// body.addEventListener("click", gameOver);
-start.addEventListener("click", playPattern);
+function randomColor() {
+    var colors = ["red", "yellow", "blue", "green"];
+    return colors[Math.floor((Math.random()*4)+1)];
+}
+
+// Gameplay functions
+function startRound() {
+    game.push(randomColor());
+    playPattern();
+    player = game.slice(0);
+    $yellowBox.addEventListener("click", flashYellow);
+    $blueBox.addEventListener("click", flashBlue);
+    $redBox.addEventListener("click", flashRed);
+    $greenBox.addEventListener("click", flashGreen);
+    $yellowBox.addEventListener("click", checkInput);
+    $blueBox.addEventListener("click", checkInput);
+    $redBox.addEventListener("click", checkInput);
+    $greenBox.addEventListener("click", checkInput);
+}
+
+function checkInput(evt) {
+    var actualResponse = player.shift();
+    var inputResponse = evt.target.id;
+
+    if (player.length === 0 && actualResponse === inputResponse) {
+        setTimeout(changeBackgroundColor, 1000);
+        setTimeout(startRound, 1000);
+        score += 1;
+        $scoreText.textContent = score;
+    } else if (actualResponse !== inputResponse && game.length > 0) {
+        setTimeout(function() {
+            alert("Game Over!");
+        }, 1000);
+        game = [];
+        score = 0;
+        $scoreText.textContent = score;
+        $body.style.backgroundColor = "rgb(0,0,0)";
+        $yellowBox.removeEventListener("click", flashYellow);
+        $blueBox.removeEventListener("click", flashBlue);
+        $redBox.removeEventListener("click", flashRed);
+        $greenBox.removeEventListener("click", flashGreen);
+    } else {
+        return;
+    }
+}
+
+$start.addEventListener("click", startRound);

@@ -52,7 +52,7 @@ body {
   margin-left: 1%;
 }
 
-#red, #green, #score, #instructions {
+#red, #green, #score {
   margin-top: 1%;
 }
 
@@ -61,5 +61,17 @@ body {
 }
 
 #score, #instructions {
-  color: blue;
+  color: white;
+  font-size: 24px;
+}
+
+#instructions {
+  margin-top: 1rem;
+}
+
+#start {
+  margin-top: 1rem;
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
 }
