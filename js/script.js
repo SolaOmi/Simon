@@ -113,7 +113,7 @@ function playPattern() {
 
 function randomColor() {
     var colors = ["red", "yellow", "blue", "green"];
-    return colors[Math.floor((Math.random()*4)+1)];
+    return colors[Math.floor(Math.random()*4)];
 }
 
 // Gameplay functions
