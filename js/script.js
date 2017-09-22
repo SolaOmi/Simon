@@ -1,28 +1,24 @@
-// I borrowed the jquery $ syntax to differentiate between regular variables and
-// DOM variables, but there is no jquery at all in this project.
-
-// Game variables
-var flashSpeed = 500;
-var game = [];
-var player = [];
-var score = 0
+// I borrowed the jquery $ syntax to differentiate between regular javascript
+// variables and DOM variables, but there is no jquery at all in this project.
 
 // HTML elements
 var $body  = document.getElementsByTagName("body")[0];
 var $start = document.getElementById("start");
 var $scoreText = document.getElementById("score");
-
-// Boxes
 var $yellowBox = document.getElementById("yellow");
 var $blueBox   = document.getElementById("blue");
 var $redBox    = document.getElementById("red");
 var $greenBox  = document.getElementById("green");
 
-// Sounds
-// var yellowSound = document.getElementById("yellowSound");
-// var blueSound   = document.getElementById("blueSound");
-// var redSound    = document.getElementById("redSound");
-// var greenSound  = document.getElementById("greenSound");
+// Game variables
+var flashSpeed = 500;
+var game = [];
+var player = [];
+var score = 0;
+var yellowSound = new Audio("beep1.ogg");
+var blueSound   = new Audio("beep2.ogg");
+var redSound    = new Audio("beep3.ogg");
+var greenSound  = new Audio("beep4.ogg");
 
 // Colors
 var yellow       = "rgb(155,155,0)";
@@ -40,33 +36,33 @@ var black        = "rgb(0,0,0)";
 
 function flashYellow() {
     $yellowBox.style.backgroundColor = brightYellow;
-    // yellowSound.play();
     setTimeout(function() {
         $yellowBox.style.backgroundColor = yellow;
+        yellowSound.play();
     }, flashSpeed);
 }
 
 function flashBlue() {
     $blueBox.style.backgroundColor = brightBlue;
-    // blueSound.play();
     setTimeout(function() {
         $blueBox.style.backgroundColor = blue;
+        blueSound.play();
     }, flashSpeed);
 }
 
 function flashRed() {
     $redBox.style.backgroundColor = brightRed;
-    // redSound.play();
     setTimeout(function() {
         $redBox.style.backgroundColor = red;
+        redSound.play();
     }, flashSpeed);
 }
 
 function flashGreen() {
     $greenBox.style.backgroundColor = brightGreen;
-    // greenSound.play();
     setTimeout(function() {
         $greenBox.style.backgroundColor = green;
+        greenSound.play();
     }, flashSpeed);
 }
 
