@@ -15,6 +15,8 @@ var flashSpeed = 500;
 var game = [];
 var player = [];
 var score = 0;
+
+// Sounds
 var yellowSound = new Audio("beep1.ogg");
 var blueSound   = new Audio("beep2.ogg");
 var redSound    = new Audio("beep3.ogg");
@@ -32,39 +34,27 @@ var brightGreen  = "rgb(0,255,0)";
 var white        = "rgb(255,255,255)";
 var black        = "rgb(0,0,0)";
 
+// Helper Object
+var boxes = {
+    yellow: [$yellowBox, yellow, brightYellow, yellowSound],
+    blue:   [$blueBox, blue, brightBlue, blueSound],
+    red:    [$redBox, red, brightRed, redSound],
+    green:  [$greenBox, green, brightGreen, greenSound]
+};
+
 // Helper Functions
-
-function flashYellow() {
-    $yellowBox.style.backgroundColor = brightYellow;
+function flashColor(box) {
+    box[0].style.backgroundColor = box[2];
     setTimeout(function() {
-        $yellowBox.style.backgroundColor = yellow;
-        yellowSound.play();
+        box[0].style.backgroundColor = box[1];
+        box[3].play();
     }, flashSpeed);
 }
 
-function flashBlue() {
-    $blueBox.style.backgroundColor = brightBlue;
-    setTimeout(function() {
-        $blueBox.style.backgroundColor = blue;
-        blueSound.play();
-    }, flashSpeed);
-}
-
-function flashRed() {
-    $redBox.style.backgroundColor = brightRed;
-    setTimeout(function() {
-        $redBox.style.backgroundColor = red;
-        redSound.play();
-    }, flashSpeed);
-}
-
-function flashGreen() {
-    $greenBox.style.backgroundColor = brightGreen;
-    setTimeout(function() {
-        $greenBox.style.backgroundColor = green;
-        greenSound.play();
-    }, flashSpeed);
-}
+function flashYellow() { flashColor(boxes.yellow); }
+function flashBlue() { flashColor(boxes.blue); }
+function flashRed() { flashColor(boxes.red); }
+function flashGreen() { flashColor(boxes.green); }
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -79,27 +69,10 @@ function changeBackgroundColor() {
     $body.style.backgroundColor = "rgb(" + rValue + "," + gValue + "," + bValue + ")";
 }
 
-function flash(color) {
-  switch(color) {
-    case "yellow":
-      flashYellow();
-      break;
-    case "blue":
-      flashBlue();
-      break;
-    case "red":
-      flashRed();
-      break;
-    case "green":
-      flashGreen();
-      break;
-  }
-}
-
 function playPattern() {
     var i = 0;
     var interval = setInterval(function() {
-        flash(game[i]);
+        flashColor(boxes[game[i]]);
         i++;
         if (i >= game.length) {
             clearInterval(interval);
@@ -117,14 +90,14 @@ function startRound() {
     game.push(randomColor());
     playPattern();
     player = game.slice(0);
-    $yellowBox.addEventListener("click", flashYellow);
-    $blueBox.addEventListener("click", flashBlue);
-    $redBox.addEventListener("click", flashRed);
-    $greenBox.addEventListener("click", flashGreen);
-    $yellowBox.addEventListener("click", checkInput);
-    $blueBox.addEventListener("click", checkInput);
-    $redBox.addEventListener("click", checkInput);
-    $greenBox.addEventListener("click", checkInput);
+    boxes.yellow[0].addEventListener("click", flashYellow);
+    boxes.blue[0].addEventListener("click", flashBlue);
+    boxes.red[0].addEventListener("click", flashRed);
+    boxes.green[0].addEventListener("click", flashGreen);
+    boxes.yellow[0].addEventListener("click", checkInput);
+    boxes.blue[0].addEventListener("click", checkInput);
+    boxes.red[0].addEventListener("click", checkInput);
+    boxes.green[0].addEventListener("click", checkInput);
 }
 
 function checkInput(evt) {
@@ -144,10 +117,10 @@ function checkInput(evt) {
         score = 0;
         $scoreText.textContent = score;
         $body.style.backgroundColor = "rgb(0,0,0)";
-        $yellowBox.removeEventListener("click", flashYellow);
-        $blueBox.removeEventListener("click", flashBlue);
-        $redBox.removeEventListener("click", flashRed);
-        $greenBox.removeEventListener("click", flashGreen);
+        boxes.yellow[0].removeEventListener("click", flashYellow);
+        boxes.blue[0].removeEventListener("click", flashBlue);
+        boxes.red[0].removeEventListener("click", flashRed);
+        boxes.green[0].removeEventListener("click", flashGreen);
     } else {
         return;
     }
