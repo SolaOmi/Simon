@@ -3,7 +3,7 @@
 
 // HTML elements
 var $body  = document.getElementsByTagName("body")[0];
-var $start = document.getElementById("start");
+var $startBtn = document.getElementById("start");
 var $scoreText = document.getElementById("score");
 var $yellowBox = document.getElementById("yellow");
 var $blueBox   = document.getElementById("blue");
@@ -98,6 +98,7 @@ function startRound() {
     boxes.blue[0].addEventListener("click", checkInput);
     boxes.red[0].addEventListener("click", checkInput);
     boxes.green[0].addEventListener("click", checkInput);
+    $startBtn.disabled = true;
 }
 
 function checkInput(evt) {
@@ -121,9 +122,10 @@ function checkInput(evt) {
         boxes.blue[0].removeEventListener("click", flashBlue);
         boxes.red[0].removeEventListener("click", flashRed);
         boxes.green[0].removeEventListener("click", flashGreen);
+        $startBtn.disabled = false;
     } else {
         return;
     }
 }
 
-$start.addEventListener("click", startRound);
+$startBtn.addEventListener("click", startRound);
