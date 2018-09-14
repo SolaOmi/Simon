@@ -9,6 +9,12 @@ body {
   background-color: black;
 }
 
+footer {
+  color: white;
+  margin-top: 10px;
+  font-size: 24px;
+}
+
 .square {
   width: 15%;
   float: left;
