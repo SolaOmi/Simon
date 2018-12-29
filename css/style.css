@@ -80,3 +80,12 @@ footer {
   height: 50px;
   border-radius: 5px;
 }
+
+#github {
+  text-decoration: none;
+  color: white;
+}
+
+#github:hover {
+  color: gold;
+}
