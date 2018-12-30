@@ -21,7 +21,7 @@ footer {
 
 .square {
   width: 15%;
-  margin: 0.2rem;
+  margin: 0.4rem;
 }
 
 .square:after {
@@ -74,4 +74,11 @@ footer {
 
 #github:hover {
   color: gold;
+}
+
+@media (max-width: 800px) {
+  .square {
+    width: 30%;
+    margin: 0.2rem;
+  }
 }
