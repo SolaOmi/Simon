@@ -10,13 +10,18 @@ body {
 
 footer {
   color: white;
-  margin-top: 10px;
-  font-size: 24px;
+  margin-top: 1.0rem;
+  font-size: 2.0rem;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
 }
 
 .square {
   width: 15%;
-  float: left;
+  margin: 0.2rem;
 }
 
 .square:after {
@@ -25,60 +30,41 @@ footer {
   padding-bottom: 100%;
 }
 
-.topRow, .bottomRow {
-  overflow: auto;
-}
-
-#yellow {
+.yellow {
   background-color: rgb(155,155,0);
 }
 
-#blue {
+.blue {
   background-color: rgb(0,0,155);
 }
 
-#red {
+.red {
   background-color: rgb(155,0,0);
 }
 
-#green {
+.green {
   background-color: rgb(0,155,0);
 }
 
-.bottomRow, #instructions {
-  clear: both;
-}
-
-#yellow, #red {
-  margin-left: 34.5%;
-}
-
-#blue, #green {
-  margin-left: 1%;
-}
-
-#red, #green, #score {
-  margin-top: 1%;
-}
-
 #score {
-  margin-bottom: 1%;
+  margin: 1.0rem 0;
 }
 
 #score, #instructions {
   color: white;
-  font-size: 24px;
+  font-size: 1.6rem;
 }
 
 #instructions {
-  margin-top: 1rem;
+  margin-top: 1.0rem;
 }
 
 #start {
-  margin-top: 1rem;
-  width: 100px;
+  border: none;
+  border-radius: 45px;
   height: 50px;
-  border-radius: 5px;
+  margin-top: 1.0rem;
+  width: 100px;
 }
 
 #github {
